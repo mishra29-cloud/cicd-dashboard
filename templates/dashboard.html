@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Pipeline Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CI/CD Pipeline Dashboard</h1>
+            <p class="subtitle">Job: {{ job_name }}</p>
+        </header>
+
+        <!-- Metrics Cards -->
+        <div class="metrics-grid">
+            <div class="card">
+                <div class="card-value">{{ metrics.total_builds }}</div>
+                <div class="card-label">Total Builds</div>
+            </div>
+            <div class="card card-success">
+                <div class="card-value">{{ metrics.pass_rate }}%</div>
+                <div class="card-label">Pass Rate</div>
+            </div>
+            <div class="card card-danger">
+                <div class="card-value">{{ metrics.failed }}</div>
+                <div class="card-label">Failed Builds</div>
+            </div>
+            <div class="card">
+                <div class="card-value">{{ metrics.avg_duration_sec }}s</div>
+                <div class="card-label">Avg Duration</div>
+            </div>
+            <div class="card">
+                <div class="card-value">{{ metrics.fastest_build_sec }}s</div>
+                <div class="card-label">Fastest Build</div>
+            </div>
+            <div class="card">
+                <div class="card-value">{{ metrics.slowest_build_sec }}s</div>
+                <div class="card-label">Slowest Build</div>
+            </div>
+        </div>
+
+        <!-- Build Duration Chart -->
+        <div class="chart-container">
+            <h2>Build Duration Trend</h2>
+            <canvas id="durationChart"></canvas>
+        </div>
+
+        <!-- Build History Table -->
+        <div class="table-container">
+            <h2>Build History</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Build #</th>
+                        <th>Status</th>
+                        <th>Duration</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for build in builds %}
+                    <tr class="{{ 'row-success' if build.result == 'SUCCESS' else 'row-failure' }}">
+                        <td><a href="{{ build.url }}" target="_blank">#{{ build.number }}</a></td>
+                        <td>
+                            <span class="badge {{ 'badge-success' if build.result == 'SUCCESS' else 'badge-failure' }}">
+                                {{ build.result }}
+                            </span>
+                        </td>
+                        <td>{{ build.duration_sec }}s</td>
+                        <td>{{ build.timestamp }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Build data from server
+        const builds = {{ builds | tojson }};
+        const reversed = [...builds].reverse();
+
+        // Duration trend chart
+        const ctx = document.getElementById('durationChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: reversed.map(b => '#' + b.number),
+                datasets: [{
+                    label: 'Duration (seconds)',
+                    data: reversed.map(b => b.duration_sec),
+                    backgroundColor: reversed.map(b =>
+                        b.result === 'SUCCESS' ? '#4ade80' : '#f87171'
+                    ),
+                    borderRadius: 4,
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Seconds' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

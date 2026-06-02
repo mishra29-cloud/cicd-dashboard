@@ -1,0 +1,82 @@
+[
+  {
+    "number": 10,
+    "result": "SUCCESS",
+    "duration_ms": 4694,
+    "duration_sec": 4.69,
+    "timestamp": "2026-05-30T19:15:02.359000",
+    "url": "http://localhost:8080/job/sample-python-pipeline/10/"
+  },
+  {
+    "number": 9,
+    "result": "SUCCESS",
+    "duration_ms": 4774,
+    "duration_sec": 4.77,
+    "timestamp": "2026-05-30T19:14:51.091000",
+    "url": "http://localhost:8080/job/sample-python-pipeline/9/"
+  },
+  {
+    "number": 8,
+    "result": "SUCCESS",
+    "duration_ms": 5408,
+    "duration_sec": 5.41,
+    "timestamp": "2026-05-30T19:14:37.072000",
+    "url": "http://localhost:8080/job/sample-python-pipeline/8/"
+  },
+  {
+    "number": 7,
+    "result": "SUCCESS",
+    "duration_ms": 5560,
+    "duration_sec": 5.56,
+    "timestamp": "2026-05-30T19:14:22.606000",
+    "url": "http://localhost:8080/job/sample-python-pipeline/7/"
+  },
+  {
+    "number": 6,
+    "result": "SUCCESS",
+    "duration_ms": 14427,
+    "duration_sec": 14.43,
+    "timestamp": "2026-05-30T19:13:52.704000",
+    "url": "http://localhost:8080/job/sample-python-pipeline/6/"
+  },
+  {
+    "number": 5,
+    "result": "FAILURE",
+    "duration_ms": 5800,
+    "duration_sec": 5.8,
+    "timestamp": "2026-05-30T19:03:47.750000",
+    "url": "http://localhost:8080/job/sample-python-pipeline/5/"
+  },
+  {
+    "number": 4,
+    "result": "FAILURE",
+    "duration_ms": 6247,
+    "duration_sec": 6.25,
+    "timestamp": "2026-05-30T19:01:29.652000",
+    "url": "http://localhost:8080/job/sample-python-pipeline/4/"
+  },
+  {
+    "number": 3,
+    "result": "FAILURE",
+    "duration_ms": 7687,
+    "duration_sec": 7.69,
+    "timestamp": "2026-05-30T18:57:02.506000",
+    "url": "http://localhost:8080/job/sample-python-pipeline/3/"
+  },
+  {
+    "number": 2,
+    "result": "FAILURE",
+    "duration_ms": 9322,
+    "duration_sec": 9.32,
+    "timestamp": "2026-05-30T18:52:45.637000",
+    "url": "http://localhost:8080/job/sample-python-pipeline/2/"
+  },
+  {
+    "number": 1,
+    "result": "FAILURE",
+    "duration_ms": 6658,
+    "duration_sec": 6.66,
+    "timestamp": "2026-05-30T18:45:45.350000",
+    "url": "http://localhost:8080/job/sample-python-pipeline/1/"
+  }
+]
