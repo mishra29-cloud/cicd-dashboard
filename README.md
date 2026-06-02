@@ -1,4 +1,4 @@
-cat > README.md << 'READMEEOF'
+
 # CI/CD Pipeline Dashboard
 
 > Real-time pipeline health metrics from Jenkins — pass rates, duration trends, and failure tracking in one dashboard.
@@ -18,7 +18,7 @@ Connects to Jenkins via REST API, fetches real pipeline build data, computes hea
 ## Run it in 60 seconds
 
 ```bash
-git clone https://github.com/Sakshi \ Dwivedi/cicd-dashboard.git
+git clone https://github.com/mishra29-cloud/cicd-dashboard.git
 cd cicd-dashboard
 docker compose up -d --build
 # Open http://localhost:9000 for dashboard
@@ -118,8 +118,3 @@ cicd-dashboard/
 ├── Dockerfile.jenkins       # Custom Jenkins image with Python
 ├── Jenkinsfile              # 4-stage pipeline definition
 └── requirements.txt
-
-## License
-
-MIT — [Sakshi Dwivedi](https://www.linkedin.com/in/YOUR_LINKEDIN/)
-READMEEOF
